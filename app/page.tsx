@@ -51,67 +51,30 @@ export default function HomePage() {
   return (
     <>
       {/* ═══════════════════════════════════════════════════════════
-          HERO
+          HERO — imagen full screen, igual en móvil y escritorio
       ═══════════════════════════════════════════════════════════ */}
-      <section className="border-b border-[#E0E0E0] bg-white">
+      <section className="relative aspect-[4/3] overflow-hidden bg-[#F2EDE5] border-b border-[#E0E0E0] sm:aspect-[16/7] lg:aspect-auto lg:h-[90vh]">
 
-        {/* Imagen hero — móvil: nombre de empresa encima */}
-        <div className="relative aspect-[4/3] overflow-hidden bg-[#F2EDE5] sm:aspect-[16/7] lg:hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/products/chaqueta-denim.jpg"
-            alt="Moda Adam — Mayorista"
-            className="h-full w-full object-cover object-center"
-          />
-          {/* Overlay gradiente */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-black/10" />
-          {/* Nombre de empresa centrado */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-            <span className="text-4xl font-black uppercase tracking-[0.18em] text-white drop-shadow-lg sm:text-5xl">
-              MODA ADAM
-            </span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.36em] text-white/80">
-              Mayorista
-            </span>
-          </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/products/chaqueta-denim.jpg"
+          alt="Moda Adam — Mayorista"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-black/10" />
+
+        {/* Nombre centrado */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
+          <span className="text-4xl font-black uppercase tracking-[0.18em] text-white drop-shadow-lg sm:text-5xl lg:text-7xl">
+            MODA ADAM
+          </span>
+          <span className="text-[11px] font-bold uppercase tracking-[0.36em] text-white/80 lg:text-sm lg:tracking-[0.4em]">
+            Mayorista
+          </span>
         </div>
 
-        {/* Fila principal — texto + imagen desktop */}
-        <div className="flex lg:min-h-[500px]">
-
-          {/* Columna texto — desktop */}
-          <div className="flex flex-1 flex-col justify-center px-6 py-10 sm:px-10 lg:px-16 xl:px-24">
-            <div className="max-w-xl">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-muted">
-                Distribución textil · B2B · Crevillent, Alicante
-              </p>
-              <h1 className="mt-4 text-4xl font-black leading-[1.02] text-ink sm:text-5xl lg:text-6xl xl:text-7xl">
-                Ropa al por mayor para tiendas y revendedores
-              </h1>
-            </div>
-          </div>
-
-          {/* Imagen derecha — solo desktop, con nombre de empresa */}
-          <div className="relative hidden overflow-hidden bg-[#F2EDE5] lg:block lg:w-1/2 xl:w-[44%]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/products/chaqueta-denim.jpg"
-              alt="Moda Adam — Mayorista"
-              className="absolute inset-0 h-full w-full object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-            {/* Nombre centrado en desktop */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-              <span className="text-5xl font-black uppercase tracking-[0.18em] text-white drop-shadow-lg xl:text-6xl">
-                MODA ADAM
-              </span>
-              <span className="text-xs font-bold uppercase tracking-[0.36em] text-white/80">
-                Mayorista
-              </span>
-            </div>
-          </div>
-
-        </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
