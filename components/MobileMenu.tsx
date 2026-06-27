@@ -8,8 +8,7 @@ interface SubItem { label: string; href: string }
 interface NavItem  { label: string; href?: string; sub?: SubItem[] }
 
 const NAV: NavItem[] = [
-  { label: 'Rebajas',       href: '/catalogo/camisetas' },
-  { label: 'Novedades',     href: '/catalogo/camisetas' },
+  { label: 'Novedades',     href: '/novedades' },
   {
     label: 'Ropa',
     sub: [
@@ -38,7 +37,6 @@ const NAV: NavItem[] = [
       { label: 'Cinturones', href: '/catalogo/accesorios' },
     ],
   },
-  { label: 'Ofertas Flash', href: '/catalogo/camisetas' },
 ];
 
 interface Props { open: boolean; onClose: () => void }
