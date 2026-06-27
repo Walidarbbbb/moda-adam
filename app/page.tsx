@@ -79,17 +79,15 @@ export default function HomePage() {
         {/* Fila principal — texto + imagen desktop */}
         <div className="flex lg:min-h-[500px]">
 
-          {/* Columna texto */}
+          {/* Columna texto — desktop */}
           <div className="flex flex-1 flex-col justify-center px-6 py-10 sm:px-10 lg:px-16 xl:px-24">
             <div className="max-w-xl">
-              <p className="text-sm text-muted sm:text-base">
-                Precios por unidad · Pedido mínimo 6&nbsp;uds · Stock real
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-muted">
+                Distribución textil · B2B · Crevillent, Alicante
               </p>
-              <div className="mt-6">
-                <Link href="/catalogo/camisetas" className="btn-ink text-sm px-8 py-4">
-                  VER CATÁLOGO
-                </Link>
-              </div>
+              <h1 className="mt-4 text-4xl font-black leading-[1.02] text-ink sm:text-5xl lg:text-6xl xl:text-7xl">
+                Ropa al por mayor para tiendas y revendedores
+              </h1>
             </div>
           </div>
 
@@ -160,7 +158,7 @@ export default function HomePage() {
                 Nuevas Novedades
               </h2>
               <Link
-                href="/catalogo/camisetas"
+                href="/novedades"
                 className="text-xs font-bold uppercase tracking-wide text-muted transition-colors hover:text-ink"
               >
                 Ver todo →
@@ -192,7 +190,7 @@ export default function HomePage() {
                 </p>
               </div>
               <Link
-                href="/catalogo/pantalones"
+                href="/best-sellers"
                 className="text-xs font-bold uppercase tracking-wide text-muted transition-colors hover:text-ink"
               >
                 Ver todo →
