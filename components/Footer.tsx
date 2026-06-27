@@ -1,13 +1,13 @@
 import Link from 'next/link';
-import { BUSINESS, CATEGORIES, WHATSAPP_NUMBER } from '@/lib/constants';
+import { BUSINESS, WHATSAPP_NUMBER } from '@/lib/constants';
 
 export default function Footer() {
   return (
     <footer className="border-t border-[#E0E0E0] bg-white">
       {/* Columnas principales */}
-      <div className="wrap grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="wrap grid gap-10 py-16 lg:grid-cols-2">
         {/* Marca */}
-        <div className="lg:col-span-2">
+        <div>
           <div className="flex items-center gap-3">
             <span className="flex h-8 w-8 items-center justify-center bg-ink text-xs font-black text-white">
               MA
@@ -48,45 +48,9 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* Catálogo */}
+        {/* Legal */}
         <div>
-          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-ink">Catálogo</p>
-          <ul className="mt-4 space-y-2.5">
-            {CATEGORIES.map((c) => (
-              <li key={c.slug}>
-                <Link
-                  href={`/catalogo/${c.slug}`}
-                  className="text-sm text-muted transition hover:text-ink"
-                >
-                  {c.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Legal + cuenta */}
-        <div>
-          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-ink">Cuenta</p>
-          <ul className="mt-4 space-y-2.5">
-            <li>
-              <Link href="/login" className="text-sm text-muted transition hover:text-ink">
-                Iniciar sesión
-              </Link>
-            </li>
-            <li>
-              <Link href="/registro" className="text-sm text-muted transition hover:text-ink">
-                Crear cuenta mayorista
-              </Link>
-            </li>
-            <li>
-              <Link href="/mis-pedidos" className="text-sm text-muted transition hover:text-ink">
-                Mis pedidos
-              </Link>
-            </li>
-          </ul>
-
-          <p className="mt-8 text-[10px] font-black uppercase tracking-[0.2em] text-ink">Legal</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-ink">Legal</p>
           <ul className="mt-4 space-y-2.5">
             <li>
               <span className="text-sm text-muted">Términos y condiciones</span>
