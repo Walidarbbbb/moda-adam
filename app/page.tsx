@@ -51,66 +51,44 @@ export default function HomePage() {
   return (
     <>
       {/* ═══════════════════════════════════════════════════════════
-          HERO
+          HERO — imagen a pantalla completa
       ═══════════════════════════════════════════════════════════ */}
-      <section className="border-b border-[#E0E0E0] bg-white">
+      <section className="relative flex min-h-screen items-end border-b border-[#E0E0E0] bg-[#F2EDE5]">
 
-        {/* Imagen hero — móvil: nombre de empresa encima */}
-        <div className="relative aspect-[4/3] overflow-hidden bg-[#F2EDE5] sm:aspect-[16/7] lg:hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/products/chaqueta-denim.jpg"
-            alt="Moda Adam — Mayorista"
-            className="h-full w-full object-cover object-center"
-          />
-          {/* Overlay gradiente */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-black/10" />
-          {/* Nombre de empresa centrado */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-            <span className="text-4xl font-black uppercase tracking-[0.18em] text-white drop-shadow-lg sm:text-5xl">
-              MODA ADAM
-            </span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.36em] text-white/80">
-              Mayorista
-            </span>
-          </div>
-        </div>
+        {/* Imagen de fondo — ocupa todo */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/products/chaqueta-denim.jpg"
+          alt="Moda Adam — Mayorista"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
 
-        {/* Fila principal — texto + imagen desktop */}
-        <div className="flex lg:min-h-[500px]">
+        {/* Overlay oscuro */}
+        <div className="absolute inset-0 bg-black/45" />
 
-          {/* Columna texto */}
-          <div className="flex flex-1 flex-col justify-center px-6 py-10 sm:px-10 lg:px-16 xl:px-24">
-            <div className="max-w-xl">
-              <p className="text-sm text-muted sm:text-base">
-                Precios por unidad · Pedido mínimo 6&nbsp;uds · Stock real
-              </p>
-              <div className="mt-6">
-                <Link href="/catalogo/camisetas" className="btn-ink text-sm px-8 py-4">
-                  VER CATÁLOGO
-                </Link>
+        {/* Contenido encima de la imagen */}
+        <div className="relative z-10 wrap pb-16 pt-32 lg:pb-24 lg:pt-40">
+
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-white/70">
+            Distribución textil · B2B · Crevillent, Alicante
+          </p>
+
+          <h1 className="mt-4 max-w-2xl text-4xl font-black leading-[1.02] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+            Ropa al por mayor para tiendas y revendedores
+          </h1>
+
+          {/* Stats */}
+          <div className="mt-10 flex flex-wrap items-center gap-6 border-t border-white/20 pt-8">
+            {[
+              ['+50',   'referencias'],
+              ['S–XXL', 'todas las tallas'],
+              ['24/48h','preparación pedido'],
+            ].map(([n, label]) => (
+              <div key={label} className="flex items-baseline gap-2">
+                <span className="text-2xl font-black text-white">{n}</span>
+                <span className="text-xs font-semibold uppercase tracking-wide text-white/60">{label}</span>
               </div>
-            </div>
-          </div>
-
-          {/* Imagen derecha — solo desktop, con nombre de empresa */}
-          <div className="relative hidden overflow-hidden bg-[#F2EDE5] lg:block lg:w-1/2 xl:w-[44%]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/products/chaqueta-denim.jpg"
-              alt="Moda Adam — Mayorista"
-              className="absolute inset-0 h-full w-full object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-            {/* Nombre centrado en desktop */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-              <span className="text-5xl font-black uppercase tracking-[0.18em] text-white drop-shadow-lg xl:text-6xl">
-                MODA ADAM
-              </span>
-              <span className="text-xs font-bold uppercase tracking-[0.36em] text-white/80">
-                Mayorista
-              </span>
-            </div>
+            ))}
           </div>
 
         </div>
