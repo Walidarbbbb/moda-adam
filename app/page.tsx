@@ -7,21 +7,21 @@ import { eur } from '@/lib/format';
 import ProductImage from '@/components/ProductImage';
 import type { Product } from '@/lib/types';
 
-function ProductMiniCard({ product }: { product: Product }) {
+function ProductScrollCard({ product }: { product: Product }) {
   return (
-    <div className="group flex flex-col">
+    <div className="group flex w-36 flex-shrink-0 flex-col sm:w-44">
       <Link href={`/producto/${product.id}`} className="block overflow-hidden bg-[#F5F3EF]">
         <div className="aspect-[3/4] overflow-hidden transition-transform duration-500 group-hover:scale-[1.04]">
           <ProductImage product={product} className="h-full w-full object-cover" />
         </div>
       </Link>
-      <div className="mt-2.5 px-0.5">
+      <div className="mt-2 px-0.5">
         <p className="line-clamp-1 text-xs font-bold text-ink">{product.name}</p>
-        <div className="mt-1 flex items-center justify-between gap-2">
+        <div className="mt-1 flex items-center justify-between gap-1">
           <span className="text-sm font-black text-ink">{eur(product.price)}</span>
           <Link
             href={`/producto/${product.id}`}
-            className="border border-ink px-3 py-1 text-[10px] font-black uppercase tracking-wide text-ink transition-colors hover:bg-ink hover:text-white"
+            className="border border-ink px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-ink transition-colors hover:bg-ink hover:text-white"
           >
             Ver
           </Link>
@@ -31,8 +31,8 @@ function ProductMiniCard({ product }: { product: Product }) {
   );
 }
 
-// Tiles de categoría estilo YESITEX — imagen de fondo real
-const CATEGORY_TILES = [
+// Círculos de categoría con foto real — estilo YESITEX móvil
+const CATEGORY_CIRCLES = [
   { slug: 'camisetas',       label: 'Camisetas',      image: '/images/products/camiseta-negra.jpg' },
   { slug: 'pantalones',      label: 'Pantalones',     image: '/images/products/pantalon-jeans.jpg' },
   { slug: 'blusas-camisas',  label: 'Blusas',         image: '/images/products/blusa-blanca.jpg' },
@@ -55,7 +55,7 @@ export default function HomePage() {
       ═══════════════════════════════════════════════════════════ */}
       <section className="border-b border-[#E0E0E0] bg-white">
 
-        {/* Imagen hero — solo visible en móvil (en desktop está en la columna derecha) */}
+        {/* Imagen hero — móvil: nombre de empresa encima */}
         <div className="relative aspect-[4/3] overflow-hidden bg-[#F2EDE5] sm:aspect-[16/7] lg:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -63,54 +63,53 @@ export default function HomePage() {
             alt="Moda Adam — Mayorista"
             className="h-full w-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-          <div className="absolute bottom-0 left-0 p-5">
-            <p className="text-[11px] font-black uppercase tracking-[0.26em] text-white/90">
-              Distribución textil · B2B · Crevillent
-            </p>
+          {/* Overlay gradiente */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-black/10" />
+          {/* Nombre de empresa centrado */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
+            <span className="text-4xl font-black uppercase tracking-[0.18em] text-white drop-shadow-lg sm:text-5xl">
+              MODA ADAM
+            </span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.36em] text-white/80">
+              Mayorista
+            </span>
           </div>
         </div>
 
-        {/* Fila principal: texto izquierda + imagen derecha (desktop) */}
+        {/* Fila principal — texto + imagen desktop */}
         <div className="flex lg:min-h-[500px]">
 
-          {/* Columna de texto */}
+          {/* Columna texto */}
           <div className="flex flex-1 flex-col justify-center px-6 py-10 sm:px-10 lg:px-16 xl:px-24">
             <div className="max-w-xl">
-
-              <p className="hidden text-xs font-bold uppercase tracking-[0.22em] text-muted lg:block">
-                Distribución textil · B2B · Crevillent, Alicante
-              </p>
-
-              <h1 className="mt-2 text-4xl font-black leading-[1.03] text-ink sm:text-5xl lg:mt-5 lg:text-6xl xl:text-7xl">
-                Ropa al por mayor para tiendas y revendedores
-              </h1>
-
-              <p className="mt-4 text-base text-muted sm:text-lg">
+              <p className="text-sm text-muted sm:text-base">
                 Precios por unidad · Pedido mínimo 6&nbsp;uds · Stock real
               </p>
-
-              <div className="mt-7">
+              <div className="mt-6">
                 <Link href="/catalogo/camisetas" className="btn-ink text-sm px-8 py-4">
                   VER CATÁLOGO
                 </Link>
               </div>
-
             </div>
           </div>
 
-          {/* Imagen derecha — solo desktop */}
+          {/* Imagen derecha — solo desktop, con nombre de empresa */}
           <div className="relative hidden overflow-hidden bg-[#F2EDE5] lg:block lg:w-1/2 xl:w-[44%]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/products/chaqueta-denim.jpg"
-              alt="Chaqueta denim — Moda Adam"
+              alt="Moda Adam — Mayorista"
               className="absolute inset-0 h-full w-full object-cover object-center"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/30 to-transparent px-8 py-6">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-white/90">
-                Moda Adam · Mayorista
-              </p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+            {/* Nombre centrado en desktop */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
+              <span className="text-5xl font-black uppercase tracking-[0.18em] text-white drop-shadow-lg xl:text-6xl">
+                MODA ADAM
+              </span>
+              <span className="text-xs font-bold uppercase tracking-[0.36em] text-white/80">
+                Mayorista
+              </span>
             </div>
           </div>
 
@@ -118,53 +117,30 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          BARRA DE STATS — estilo YESITEX
-      ═══════════════════════════════════════════════════════════ */}
-      <div className="border-b border-[#E0E0E0] bg-ink">
-        <div className="wrap grid grid-cols-2 sm:grid-cols-4">
-          {[
-            ['+15',   'Años distribuyendo'],
-            ['+50',   'Referencias activas'],
-            ['6 uds', 'Pedido mínimo'],
-            ['24/48h','Preparación envío'],
-          ].map(([n, label]) => (
-            <div
-              key={label}
-              className="flex flex-col items-center gap-1.5 px-4 py-6 text-center"
-            >
-              <span className="text-2xl font-black text-white sm:text-3xl">{n}</span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">
-                {label}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ═══════════════════════════════════════════════════════════
-          CATEGORÍAS — tiles con foto estilo YESITEX
+          CATEGORÍAS — círculos con foto, scroll horizontal (YESITEX móvil)
       ═══════════════════════════════════════════════════════════ */}
       <section className="border-b border-[#E0E0E0] bg-white py-10 sm:py-14">
         <div className="wrap">
           <p className="eyebrow mb-7 text-center">Comprar por categoría</p>
 
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-5">
-            {CATEGORY_TILES.map((cat) => (
+          <div className="flex gap-5 overflow-x-auto pb-3 sm:gap-7 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {CATEGORY_CIRCLES.map((cat) => (
               <Link
                 key={cat.slug + cat.label}
                 href={`/catalogo/${cat.slug}`}
-                className="group relative block aspect-square overflow-hidden bg-bone"
+                className="group flex flex-shrink-0 flex-col items-center gap-2.5"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={cat.image}
-                  alt={cat.label}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                {/* Overlay oscuro */}
-                <div className="absolute inset-0 bg-black/35 transition-colors duration-300 group-hover:bg-black/50" />
+                {/* Círculo con foto */}
+                <div className="h-20 w-20 overflow-hidden rounded-full bg-bone ring-2 ring-transparent transition-all duration-200 group-hover:ring-clay sm:h-24 sm:w-24 lg:h-28 lg:w-28">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={cat.image}
+                    alt={cat.label}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
                 {/* Etiqueta */}
-                <span className="absolute inset-x-0 bottom-0 p-3 text-xs font-black uppercase tracking-[0.16em] text-white drop-shadow-sm sm:p-4 sm:text-[11px]">
+                <span className="text-center text-[10px] font-black uppercase tracking-[0.14em] text-ink/80 transition-colors group-hover:text-ink">
                   {cat.label}
                 </span>
               </Link>
@@ -174,12 +150,12 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          NUEVAS NOVEDADES
+          NUEVAS NOVEDADES — fila deslizable
       ═══════════════════════════════════════════════════════════ */}
       {hydrated && products.length > 0 && (
         <section className="border-b border-[#E0E0E0] bg-white py-12 sm:py-16">
           <div className="wrap">
-            <div className="mb-8 flex items-end justify-between">
+            <div className="mb-7 flex items-end justify-between">
               <h2 className="text-2xl font-black uppercase tracking-[0.06em] text-ink sm:text-3xl">
                 Nuevas Novedades
               </h2>
@@ -190,9 +166,10 @@ export default function HomePage() {
                 Ver todo →
               </Link>
             </div>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-              {products.slice(0, 6).map((p) => (
-                <ProductMiniCard key={p.id} product={p} />
+            {/* Fila deslizable */}
+            <div className="flex gap-3 overflow-x-auto pb-3 sm:gap-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {products.slice(0, 10).map((p) => (
+                <ProductScrollCard key={p.id} product={p} />
               ))}
             </div>
           </div>
@@ -200,12 +177,12 @@ export default function HomePage() {
       )}
 
       {/* ═══════════════════════════════════════════════════════════
-          BEST SELLERS
+          BEST SELLERS — fila deslizable
       ═══════════════════════════════════════════════════════════ */}
-      {hydrated && products.length > 6 && (
+      {hydrated && products.length > 0 && (
         <section className="border-b border-[#E0E0E0] bg-[#FAFAFA] py-12 sm:py-16">
           <div className="wrap">
-            <div className="mb-8 flex items-end justify-between">
+            <div className="mb-7 flex items-end justify-between">
               <div>
                 <h2 className="text-2xl font-black uppercase tracking-[0.06em] text-ink sm:text-3xl">
                   Best Sellers
@@ -221,9 +198,10 @@ export default function HomePage() {
                 Ver todo →
               </Link>
             </div>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-              {products.slice(6, 12).map((p) => (
-                <ProductMiniCard key={p.id} product={p} />
+            {/* Fila deslizable — orden invertido para variar */}
+            <div className="flex gap-3 overflow-x-auto pb-3 sm:gap-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {[...products].reverse().slice(0, 10).map((p) => (
+                <ProductScrollCard key={p.id} product={p} />
               ))}
             </div>
           </div>
