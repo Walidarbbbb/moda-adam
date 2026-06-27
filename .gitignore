@@ -1,0 +1,17 @@
+# Dependencias
+/node_modules
+
+# Compilados de Next.js
+/.next
+/out
+
+# Variables de entorno (en esta demo no hacen falta)
+.env*.local
+
+# Vercel
+.vercel
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
